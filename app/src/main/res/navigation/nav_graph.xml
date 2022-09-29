@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/charList">
+
+    <fragment
+        android:id="@+id/charList"
+        android:name="com.alecbrando.starteranime.CharList"
+        android:label="fragment_char_list"
+        tools:layout="@layout/fragment_char_list" >
+        <action
+            android:id="@+id/action_charList_to_charDetail"
+            app:destination="@id/charDetail"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/charDetail"
+        android:name="com.alecbrando.starteranime.CharDetail"
+        android:label="fragment_char_detail"
+        tools:layout="@layout/fragment_char_detail" >
+        <action
+            android:id="@+id/action_charDetail_to_charList"
+            app:destination="@id/charList" />
+        <argument android:name="charId"
+            app:argType="string" />
+    </fragment>
+</navigation>

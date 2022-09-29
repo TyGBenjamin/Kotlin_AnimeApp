@@ -13,7 +13,7 @@ class CharDetail : Fragment() {
         fun newInstance() = CharDetail()
     }
 
-    private lateinit var viewModel: CharDetailViewModel
+//    private lateinit var viewModel: CharDetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,11 +21,11 @@ class CharDetail : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_char_detail, container, false)
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CharDetailViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+//
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//        viewModel = ViewModelProvider(this).get(CharDetailViewModel::class.java)
+//        // TODO: Use the ViewModel
+//    }
 
 }

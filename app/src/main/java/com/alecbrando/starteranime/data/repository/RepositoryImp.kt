@@ -2,6 +2,7 @@ package com.alecbrando.starteranime.data.repository
 import android.util.Log
 import com.alecbrando.starteranime.data.remote.ApiService
 import com.alecbrando.starteranime.models.Anime
+import com.alecbrando.starteranime.models.AnimeWrapper
 import com.alecbrando.starteranime.models.Data
 import com.alecbrando.starteranime.models.repository.Repository
 import com.alecbrando.starteranime.utils.Resource
@@ -26,9 +27,9 @@ object RepositoryImp : Repository {
         }
     }
 
-    override suspend fun getAnimeById(id: String): Resource<Data> = withContext(Dispatchers.IO) {
+    override suspend fun getAnimeById(id: String): Resource<AnimeWrapper> = withContext(Dispatchers.IO) {
         return@withContext try {
-            val res = apiInstance.getAnimes()
+            val res = apiInstance.getAnimeById(id)
             if (res.isSuccessful && res.body() != null) {
                 Resource.Success(res.body()!!)
             } else {

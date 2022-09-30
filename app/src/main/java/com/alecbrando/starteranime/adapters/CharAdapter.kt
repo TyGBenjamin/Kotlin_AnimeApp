@@ -1,5 +1,6 @@
 package com.alecbrando.starteranime.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,7 @@ class CharAdapter(
             imageView.load(anime.attributes.posterImage.large)
 
             root.setOnClickListener{
+                Log.d("CLICK", "applyAnime: ${anime.id}")
                 navigate(anime.id)
             }
         }

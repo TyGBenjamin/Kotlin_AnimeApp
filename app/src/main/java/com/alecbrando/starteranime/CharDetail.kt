@@ -48,11 +48,11 @@ class CharDetail : Fragment() {
                     is Resource.Success -> {
 
                         println("initViews - Success ${anime.data}")
-                        imageView.load(anime.data.data[2].attributes.posterImage)
-                        tvTitle.text = anime.data.data[2].attributes.canonicalTitle
-                        tvRating.text = anime.data.data[2].attributes.averageRating
-                        tvPopularity.text = "Popularity: " + anime.data.data[2].attributes.popularity
-                        description.text = anime.data.data[2].attributes.description
+                        imageView.load(anime.data.data.attributes.posterImage.large)
+                        tvTitle.text = anime.data.data.attributes.canonicalTitle
+                        tvRating.text = anime.data.data.attributes.averageRating
+                        tvPopularity.text = "Popularity: " + anime.data.data.attributes.popularity
+                        description.text = anime.data.data.attributes.description
                     }
                     null -> Log.d(TAG, "THERES SOME NULLS HERE")
                 }

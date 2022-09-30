@@ -2,6 +2,7 @@ package com.alecbrando.starteranime.data.remote
 
 
 import com.alecbrando.starteranime.models.Anime
+import com.alecbrando.starteranime.models.AnimeWrapper
 import com.alecbrando.starteranime.models.Data
 import com.alecbrando.starteranime.utils.Constants.BASE_URL
 import retrofit2.Response
@@ -14,8 +15,8 @@ interface ApiService {
     @GET("trending/anime")
     suspend fun getAnimes(): Response<Data>
 
-//    @GET("anime/{id}")
-//    suspend fun getAnimeById(@Path("id") id: String): Response<Anime>
+    @GET("anime/{id}")
+    suspend fun getAnimeById(@Path("id") id: String): Response<AnimeWrapper>
 
     companion object {
         val apiInstance =

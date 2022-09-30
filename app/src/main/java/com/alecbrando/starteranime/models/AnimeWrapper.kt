@@ -1,5 +1,5 @@
 package com.alecbrando.starteranime.models
 
-data class Data(
-    val data : List<Anime>
+data class AnimeWrapper(
+    val data: Anime
 )

@@ -14,8 +14,8 @@ interface ApiService {
     @GET("trending/anime")
     suspend fun getAnimes(): Response<Data>
 
-    @GET("anime/{id}")
-    suspend fun getAnimeById(@Path("id") id: String): Response<Anime>
+//    @GET("anime/{id}")
+//    suspend fun getAnimeById(@Path("id") id: String): Response<Anime>
 
     companion object {
         val apiInstance =

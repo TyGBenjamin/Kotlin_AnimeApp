@@ -18,64 +18,43 @@ import com.alecbrando.starteranime.utils.Resource
 import kotlinx.coroutines.launch
 
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class CharList : Fragment() {
-
-    private var param1: String? = null
-    private var param2: String? = null
-
-    var _binding : FragmentCharListBinding? = null
-    val binding: FragmentCharListBinding get() =  _binding!!
+    var _binding: FragmentCharListBinding? = null
+    val binding: FragmentCharListBinding get() = _binding!!
     private val viewModel by viewModels<CharListViewModel>()
-//    private val charAdapter: CharAdapter by lazy {CharAdapter()}
-
-
-
-
+//    private val charAdapter: CharAdapter by lazy { CharAdapter(::navigateToDetails) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = FragmentCharListBinding.inflate(inflater, container, false).also{
+    ): View = FragmentCharListBinding.inflate(inflater, container, false).also {
         _binding = it
     }.root
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initViews()
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        initViews()
-//    }
-
     private fun initViews() = with(binding) {
+//        rvView.adapter = charAdapter
         viewModel.viewState.observe(viewLifecycleOwner) { viewState ->
             when (viewState) {
                 is Resource.Error -> viewState.message
                 is Resource.Loading -> {
                     //
+                    Log.d(TAG, "initViews: error")
                 }
-                is Resource.Success -> rvView.adapter = CharAdapter(this@CharList::navigateToDetails).apply{
-                    addItems(viewState.data.data)
-                }
-
+                is Resource.Success -> rvView.adapter = CharAdapter(viewState.data.data.toMutableList(),@CharListFragment ::navigateToDetails).apply{addItems(viewState.data.data)}
             }
         }
     }
 
-     private fun navigateToDetails(animeId: String) {
+    private fun navigateToDetails(animeId: String) {
         val action = CharListDirections.actionCharListToCharDetail(animeId)
         findNavController().navigate(action)
     }
+
     companion object {
         const val TAG = "DashboardFragmentLogger"
     }

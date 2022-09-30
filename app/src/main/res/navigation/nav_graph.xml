@@ -23,9 +23,6 @@
         android:name="com.alecbrando.starteranime.CharDetail"
         android:label="fragment_char_detail"
         tools:layout="@layout/fragment_char_detail" >
-        <action
-            android:id="@+id/action_charDetail_to_charList"
-            app:destination="@id/charList" />
         <argument android:name="charId"
             app:argType="string" />
     </fragment>

@@ -6,7 +6,8 @@ data class Attributes(
     val canonicalTitle : String,
     val posterImage : PosterImage,
     val popularity : Int,
-    val averageRating : String
+    val averageRating : String,
+    val description: String
 
 )
 

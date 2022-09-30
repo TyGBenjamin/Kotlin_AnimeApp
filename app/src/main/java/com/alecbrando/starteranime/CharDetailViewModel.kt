@@ -9,17 +9,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class CharDetailViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
-    private val _animeDetails: MutableStateFlow<Resource<Data>?> = MutableStateFlow(null)
-    val animeDetails = _animeDetails.asStateFlow()
 
+class CharDetailViewModel: ViewModel() {
     private val repo = RepositoryImp
+    private val _anime: MutableStateFlow<Resource<Data>?> = MutableStateFlow(Resource.Loading())
+    val anime = _anime.asStateFlow()
 
-    private fun getAnimeById(id: String) {
+    fun setAnime(charId: String) {
         viewModelScope.launch {
-            _animeDetails.value = repo.getAnimeById(id)
+            _anime.value = repo.getAnimeById(charId)
         }
     }
-
 }

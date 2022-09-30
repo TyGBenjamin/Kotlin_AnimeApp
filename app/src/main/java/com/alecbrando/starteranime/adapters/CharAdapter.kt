@@ -22,11 +22,11 @@ class CharAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun applyAnime(anime: Anime) = with(binding) {
             tvTitle.text = anime.attributes.canonicalTitle
-            imageView.load(anime.attributes.posterImage.small)
+            imageView.load(anime.attributes.posterImage.large)
 
-//            root.setOnClickListener{
-//                navigate(anime.id)
-//            }
+            root.setOnClickListener{
+                navigate(anime.id)
+            }
         }
     }
 

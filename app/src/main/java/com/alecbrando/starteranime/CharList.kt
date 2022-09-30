@@ -50,8 +50,8 @@ class CharList : Fragment() {
         }
     }
 
-    private fun navigateToDetails(animeId: String) {
-        val action = CharListDirections.actionCharListToCharDetail(animeId)
+    private fun navigateToDetails(charId: String) {
+        val action = CharListDirections.actionCharListToCharDetail(charId)
         findNavController().navigate(action)
     }
 

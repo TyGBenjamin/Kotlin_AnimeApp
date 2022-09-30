@@ -21,7 +21,7 @@ class CharAdapter(
         private val binding: ItemListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun applyAnime(anime: Anime) = with(binding) {
-            imageView.load(anime.attributes.posterImage[0].toString())
+            imageView.load(anime.attributes.posterImage.small)
             tvTitle.text = anime.attributes.title.toString()
             root.setOnClickListener{
                 navigate(anime.id)

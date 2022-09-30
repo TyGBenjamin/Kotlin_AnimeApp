@@ -6,5 +6,5 @@ import com.alecbrando.starteranime.utils.Resource
 
 interface Repository {
     suspend fun getAnimes() : Resource<Data>
-    suspend fun getAnimeById(id: String): Resource<Anime>
+    suspend fun getAnimeById(id: String): Resource<Data>
 }

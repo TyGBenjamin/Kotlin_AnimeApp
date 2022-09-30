@@ -24,9 +24,9 @@ object RepositoryImp : Repository {
         }
     }
 
-    override suspend fun getAnimeById(id: String): Resource<Anime> = withContext(Dispatchers.IO) {
+    override suspend fun getAnimeById(id: String): Resource<Data> = withContext(Dispatchers.IO) {
         return@withContext try {
-            val res = apiInstance.getAnimeById(id)
+            val res = apiInstance.getAnimes()
             if (res.isSuccessful && res.body() != null) {
                 Resource.Success(res.body()!!)
             } else {

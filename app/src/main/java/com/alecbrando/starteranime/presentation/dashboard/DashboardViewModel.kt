@@ -13,7 +13,6 @@ class DashboardViewModel : ViewModel() {
     private val _animeList: MutableStateFlow<Resource<AnimeListResponseWrapper>> =
         MutableStateFlow(Resource.Loading)
     val animeList = _animeList.asStateFlow()
-
     val repo = RepositoryImpl
 
     init {

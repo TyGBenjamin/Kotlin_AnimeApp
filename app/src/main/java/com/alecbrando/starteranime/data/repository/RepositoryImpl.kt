@@ -1,14 +1,12 @@
 package com.alecbrando.starteranime.data.repository
 
 import com.alecbrando.starteranime.data.remote.RemoteDataSource
-import com.alecbrando.starteranime.domain.models.Anime
 import com.alecbrando.starteranime.domain.models.AnimeListResponseWrapper
-import com.alecbrando.starteranime.domain.models.AnimeObj
+import com.alecbrando.starteranime.domain.models.AnimeWrapper
 import com.alecbrando.starteranime.domain.repository.Repository
 import com.alecbrando.starteranime.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Response
 
 object RepositoryImpl : Repository {
 
@@ -27,7 +25,7 @@ object RepositoryImpl : Repository {
         }
     }
 
-    override suspend fun getAnimeById(id: String): Resource<AnimeObj> = withContext(Dispatchers.IO) {
+    override suspend fun getAnimeById(id: String): Resource<AnimeWrapper> = withContext(Dispatchers.IO) {
         return@withContext try {
             val res = apiInstance.getAnimeById(id)
             if (res.isSuccessful && res.body() != null) {

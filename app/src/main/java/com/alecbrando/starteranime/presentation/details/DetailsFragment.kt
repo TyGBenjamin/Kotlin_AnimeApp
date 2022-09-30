@@ -47,14 +47,13 @@ class DetailsFragment : Fragment() {
                     )
                     is Resource.Loading -> Log.d(TAG, "initViews: Loading....")
                     is Resource.Success -> {
-//                        println("initViews - Success ${anime.data.data.attributes.synopsis}")
                         println("initViews - Success ${anime.data}")
                         ivPoster.load(anime.data.data.attributes.posterImage.large)
                         tvTitle.text = anime.data.data.attributes.title
                         tvScore.text = "Score: " + anime.data.data.attributes.score
                         tvRank.text = "Rank: " + anime.data.data.attributes.rank
                         tvPopularity.text = "Popularity: " + anime.data.data.attributes.popularity
-                        description.text = "Sypnosis: " + anime.data.data.attributes.synopsis
+                        description.text = anime.data.data.attributes.synopsis
                     }
                     null -> Log.d(TAG, "THERES SOME NULLS HERE")
                 }

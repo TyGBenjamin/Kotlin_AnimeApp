@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.alecbrando.starteranime.databinding.FragmentDashboardBinding
 import com.alecbrando.starteranime.presentation.dashboard.DashboardAdapter
 import com.alecbrando.starteranime.presentation.dashboard.DashboardViewModel
